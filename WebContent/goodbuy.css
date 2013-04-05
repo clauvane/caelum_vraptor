@@ -1,0 +1,164 @@
+*{margin:0px; padding:0px; font-family:Arial, Helvetica, sans-serif;}
+
+#header {
+	height: 100px;
+	background-color: navy;
+}
+#carrinho {
+	height: 80px;
+	background-color: #dcdee0;
+	width: 300px;
+	margin: 10px;
+	float: right;
+	border: 1px solid gray;
+	-moz-border-radius: 10px;
+}
+
+#carrinho h3 a {
+	color: navy;
+}
+#carrinho h3 {
+	margin: 10px;
+}
+#carrinho span {
+	margin: 10px;	
+}
+#carrinho ul {
+	list-style: none;
+	padding-left: 10px;
+}
+#carrinho li {
+	float: left;
+	margin-right: 20px;	
+}
+
+#usuario {
+	float: left;
+	heigth: 50px;
+	background-color: #dcdee0;
+	margin: 10px;
+	padding: 5px;
+	border: 1px solid gray;
+	-moz-border-radius: 5px;	
+}
+#erros {
+	background-color: red;
+}
+
+#footer {
+	border-top: 1px solid gray;
+	clear:both;
+}
+body {
+	background-color: navy;
+}
+#body {
+	border-top: 1px solid gray;
+	width: 100%;
+	margin: 0 auto;
+	min-height: 300px;
+	padding: 10px 0;
+	float:left;
+	background-color: #dcdee0;
+}
+
+#content {
+	float:left;
+	padding-left: 10px;
+}
+
+#menu {
+	float:left;
+	width: 200px;
+}
+
+#menu > ul {
+	list-style: none;
+	padding-left: 5px; 
+	background-color: #2a2948;
+	-moz-border-radius: 0 5px 5px 0;
+}
+#menu > ul > li {
+	border-top: 2px solid white;
+	height: 23px;
+	padding: 5px 0;
+}
+#menu > ul > li:hover {
+	background-color: #5d5c7B;
+}
+#menu > ul > li:last-child {
+	-moz-border-radius: 0 0 5px 0;
+}
+#menu > ul > li:first-child {
+	-moz-border-radius: 0 5px 0 0;
+	border-top: none;
+}
+#menu li a {
+	color: white;
+	text-decoration: none;
+}
+.link {
+	text-decoration: underline;
+	border: none;
+	background: none;
+	color: blue;
+	cursor: pointer;
+	padding:0;
+	margin:0;
+}
+
+input:FOCUS, textarea:FOCUS {
+	background-color: #e7ecf1;
+	border: 1px solid gray;
+	-moz-border-radius: 2px;
+	padding: 1px;
+}
+input, label, textarea {
+	display: block;
+}
+input.qtde {
+	display: inline;
+	width: 2em;
+}
+.hint {
+	color: gray;
+	font-size: 10pt;
+}
+label.error {
+	color:red;	
+}
+fieldset {
+	border:none;
+	padding: 10px;
+	width: 700px;
+	border-top: 3px solid #365372;
+}
+
+fieldset legend {
+	border: 1px solid #365372;
+	-moz-border-radius: 3px;
+	background-color: #c7c9cb;
+	font-weight: bold;
+	padding: 3px;
+	margin-bottom: 15px;
+	font-size: 16pt;
+	color: #365372;
+}
+
+table thead {
+	background-color: #2a2948;
+	color: white;
+	font-weight: bold;
+}
+
+table tbody tr:nth-child(even) {
+	background-color: #a29bc0;
+}
+table tbody td {
+	vertical-align: text-bottom;	
+}
+table tfoot th {
+	background-color: #2a2948;
+	color: white;
+	font-weight: bold;
+}
