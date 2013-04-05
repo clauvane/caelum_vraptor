@@ -1,26 +1,15 @@
 package br.com.caelum.goodbuy.modelo;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.AnnotationConfiguration;
+import br.com.caelum.goodbuy.infra.ProdutoDao;
 
-@SuppressWarnings("deprecation")
 public class TesteDeConexaoHibernate {
 	public static void main(String[] args) {
-		AnnotationConfiguration configuration = new AnnotationConfiguration();
-		configuration.configure("hibernate.cfg.xml");
-		SessionFactory sessionFactory = configuration.buildSessionFactory();
-		Session session = sessionFactory.openSession();
 		
 		Produto produto = new Produto();
-		produto.setNome("Prateleira");
-		produto.setDescricao("Uma prateleira para colocar livros");
-		produto.setPreco(35.90);
+		produto.setNome("MacBook");
+		produto.setDescricao("NoteBokk da apple");
+		produto.setPreco(3.799);
 		
-		Transaction tx = session.beginTransaction();
-		session.save(produto);
-		tx.commit();
-
+		new ProdutoDao().salva(produto);
 	}
 }
