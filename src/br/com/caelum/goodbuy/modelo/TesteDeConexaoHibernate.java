@@ -5,6 +5,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.AnnotationConfiguration;
 
+@SuppressWarnings("deprecation")
 public class TesteDeConexaoHibernate {
 	public static void main(String[] args) {
 		AnnotationConfiguration configuration = new AnnotationConfiguration();
