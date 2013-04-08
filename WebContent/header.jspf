@@ -23,7 +23,10 @@
 	<div id="body">
 		<div id="menu">
 			<ul>
+				<li><a href="<c:url value="/produtos/formulario"/>">Cadastrar Produtos</a></li>
+			</ul>
+			<ul>
+				<li><a href="<c:url value="/produtos/lista"/>">Listar Produtos</a></li>
 			</ul>
 		</div>
 		<div id="content">
-		

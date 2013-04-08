@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=US-ASCII"
     pageEncoding="US-ASCII"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,13 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table border="1">
-		<th>Paises</th>
-		<c:forEach var="pais" items="${stringList}">
-			<tr>
-				<td>${pais}</td>
-			</tr>
-		</c:forEach>
-	</table>
+<h3>Produto adicionado com sucesso!</h3>
 </body>
 </html>
