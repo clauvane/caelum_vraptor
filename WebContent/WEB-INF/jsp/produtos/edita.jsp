@@ -19,7 +19,7 @@
 			<label for="descricao">Descricao:</label>
 			<textarea id="descricao" name="produto.descricao">${produto.descricao}</textarea>
 			
-			<label for="preco">Preço:</label> 
+			<label for="preco">Preco:</label> 
 			<input id="preco" type="text" name="produto.preco" value="${produto.preco}" />
 			
 			<button type="submit">Enviar</button>

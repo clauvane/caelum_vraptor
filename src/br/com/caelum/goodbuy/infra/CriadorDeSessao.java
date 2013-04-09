@@ -1,26 +1,35 @@
 package br.com.caelum.goodbuy.infra;
 
-import org.hibernate.HibernateException;
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.AnnotationConfiguration;
 
-@SuppressWarnings("deprecation")
-public class CriadorDeSessao {
-	
-	public static Session getSession(){
-		try {
-			AnnotationConfiguration annotationConfiguration = new AnnotationConfiguration();
-			annotationConfiguration.configure("hibernate.cfg.xml");
-			SessionFactory sessionFactory = annotationConfiguration.buildSessionFactory();
-			
-			Session session = sessionFactory.openSession();
-			
-			return session;
-		} catch (HibernateException e) {
-			e.printStackTrace();
-			throw new HibernateException("Erro ao criar Sessao do hibernate!");
-		}
+import br.com.caelum.vraptor.ioc.Component;
+import br.com.caelum.vraptor.ioc.ComponentFactory;
+
+@Component
+public class CriadorDeSessao implements ComponentFactory<Session> {
+
+	private final SessionFactory sessionFactory;
+	private Session session;
+
+	public CriadorDeSessao(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
 	}
 	
+	@PostConstruct
+	public void abre(){
+		session = sessionFactory.openSession();
+	}
+
+	public Session getInstance() {
+		return session;
+	}
+	
+	@PreDestroy
+	public void fecha(){
+		session.close();
+	}
 }
