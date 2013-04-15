@@ -5,6 +5,8 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Restrictions;
 
 import br.com.caelum.goodbuy.modelo.Produto;
 import br.com.caelum.vraptor.ioc.Component;
@@ -24,6 +26,7 @@ public class ProdutoDao {
 		transaction.commit();
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Produto> listaTudo() {
 		Criteria criteria = session.createCriteria(Produto.class);
 		return criteria.list();
@@ -43,5 +46,16 @@ public class ProdutoDao {
 		Transaction transaction = session.beginTransaction();
 		session.delete(produto);
 		transaction.commit();
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Produto> busca(String nome) {
+		Criteria criteria = session.createCriteria(Produto.class);
+		criteria.add(Restrictions.ilike("nome", nome, MatchMode.ANYWHERE));
+		return criteria.list();
+	}
+
+	public void recarrega(Produto produto) {
+		session.refresh(produto);
 	}
 }

@@ -19,24 +19,62 @@
 </head>
 
 <body>
-	<div id="header"></div>
-	<div id="erros">
-		<ul>
-			<c:forEach items="${errors}" var="error">
-				<li>${error.category } - ${error.message }</li>
-			</c:forEach>
-		</ul>
-
-	</div>
-	<div id="body">
-		<div id="menu">
-			<ul>
-				<li><a href="<c:url value="/produtos/formulario"/>">Cadastrar
-						Produtos</a></li>
-			</ul>
-			<ul>
-				<li><a href="<c:url value="/produtos/lista"/>">Listar
-						Produtos</a></li>
-			</ul>
+	<div id="header">
+		<div id="usuario">
+			<c:if test="${usuarioWeb.logado}">
+				Ola, ${usuarioWeb.nome }!
+				<a href="<c:url value="/logout"/>">Logout</a>
+			</c:if>
+			<c:if test="${empty usuarioWeb or not usuarioWeb.logado}">
+				Voce nao esta logado.
+				<a href="<c:url value="/login"/>">Login</a>
+				<a href="<c:url value="/usuario/novo"/>">Cadastre-se</a>
+			</c:if>
 		</div>
-		<div id="content">
+
+		<div id="carrinho">
+			<h3>Meu carrinho:</h3>
+			<c:if test="${empty carrinho or carrinho.totalDeItens eq 0 }">
+				<span>Voce nao possui itens no seu carrinho</span>
+			</c:if>
+			<c:if test="${carrinho.totalDeItens > 0 }">
+				<ul>
+					<li><strong>Itens:</strong> ${carrinho.totalDeItens }</li>
+					<li><strong>Total:</strong> <fmt:formatNumber type="currency"
+							value="${carrinho.total }" /></li>
+				</ul>
+			</c:if>
+		</div>
+
+		<div id="erros">
+			<ul>
+				<c:forEach items="${errors}" var="error">
+					<li>${error.category } - ${error.message }</li>
+				</c:forEach>
+			</ul>
+
+		</div>
+		<div id="body">
+			<div id="menu">
+			<c:if test="${usuarioWeb.logado }">
+				<ul>
+					<li><a href="<c:url value="/usuario/novo"/>">Cadastrar
+							Usuario</a></li>
+				</ul>
+			</c:if>
+				<ul>
+					<li><a href="<c:url value="/produtos/novo"/>">Cadastrar
+							Produtos</a></li>
+				</ul>
+				<ul>
+					<li><a href="<c:url value="/produtos"/>">Listar Produtos</a></li>
+				</ul>
+				<ul>
+					<li>
+						<form action="<c:url value="/produtos/busca"/>">
+							<input name="nome" />
+						</form>
+					</li>
+				</ul>
+			</div>
+			<div id="content">
