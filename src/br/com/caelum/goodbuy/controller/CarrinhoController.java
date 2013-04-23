@@ -3,6 +3,7 @@ package br.com.caelum.goodbuy.controller;
 import br.com.caelum.goodbuy.infra.ProdutoDao;
 import br.com.caelum.goodbuy.modelo.Carrinho;
 import br.com.caelum.goodbuy.modelo.Item;
+import br.com.caelum.goodbuy.modelo.Restrito;
 import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
@@ -22,6 +23,7 @@ public class CarrinhoController {
 		this.result = result;
 	}
 	
+	@Restrito
 	@Post("/carrinho")
 	public void adiciona(Item item){
 		produtoDao.recarrega(item.getProduto());
@@ -29,10 +31,12 @@ public class CarrinhoController {
 		result.redirectTo(this).visualiza();
 	}
 	
+	@Restrito
 	@Get("/carrinho")
 	public void visualiza(){
 	}
 	
+	@Restrito
 	@Delete("/carrinho/{indiceItem}")
 	public void remove(int indice){
 		carrinho.remove(indice);

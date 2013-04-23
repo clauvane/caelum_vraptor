@@ -72,8 +72,29 @@
 				<ul>
 					<li>
 						<form action="<c:url value="/produtos/busca"/>">
-							<input name="nome" />
+							<input id="busca" name="nome" />
 						</form>
+						<script type="text/javascript">
+							$("#busca").puts("Busca produtos por nome");
+							
+							$("#busca").autocomplete('<c:url value="/produtos/busca.json"/>',
+									{
+										dataType : "json",
+										parse : function(produtos) {
+											return $.map(produtos, function(produto) {
+												return {
+													data : produto,
+													value : produto.nome,
+													result : produto.nome
+												};
+											});
+										},
+										formatItem : function(produto) {
+											return produto.nome + " --> ("
+													+ produto.preco + ")";
+										}
+									});
+						</script>
 					</li>
 				</ul>
 			</div>
